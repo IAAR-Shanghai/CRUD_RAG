@@ -1,0 +1,10 @@
+GPT_api_key = ''
+GPT_transit_url = ''
+GPT_transit_token = ''
+GPT_user = ''
+GPT_transit_url = ''
+
+Qwen_7B_local_path = ''
+Baichuan2_13b_local_path = ''
+ChatGLM3_local_path = ''
+Qwen_14B_local_path = ''

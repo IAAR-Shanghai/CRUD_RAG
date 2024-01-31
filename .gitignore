@@ -1,0 +1,9 @@
+output*
+statistics/
+sentence-transformers/
+__pycache__/
+.vscode/
+tmp/
+bash
+tmp*
+real_config*
