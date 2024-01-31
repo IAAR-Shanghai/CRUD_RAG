@@ -1,12 +1,10 @@
-# highlights
+# Highlights
 
 - 全面支持中文RAG Benchmark评测，包括原生的中文数据集、评测任务、主流基座测试；
-- 覆盖CRUD(增删改查)，即的大模型信息新增能力、信息缩减能力、信息校正能力、信息查询问答能力 全方位的评测；
+- 覆盖CRUD(增删改查)，即大模型信息新增能力、信息缩减能力、信息校正能力、信息查询问答能力 全方位的评测；
 - 总测试数据量达到36166个，为中文RAG测试最多；
 - 多个指标类型覆盖，包括 ROUGE, BLEU, bertScore, RAGQuestEval，一键评估；
 - TODO：增加更多英文RAG评测，双语支持；欢迎 Star 持续关注！
-
-# English
 
 # CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
 
