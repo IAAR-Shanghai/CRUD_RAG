@@ -7,3 +7,4 @@ tmp/
 bash
 tmp*
 real_config*
+merged.json
