@@ -67,8 +67,17 @@ class HalluModified(BaseTask):
         generated_text = data_point["generated_text"]
         ground_truth_text = data_point["hallucinatedMod"]
         data_point["ground_truth_text"] = ground_truth_text
+           
+        if self.use_quest_eval:
+            QA_avg_F1, QA_recall, quest_eval_save = self.quest_eval.quest_eval(data_point)
+        else:
+            QA_avg_F1, QA_recall, quest_eval_save = 0.0, 0.0, {}
         
-        QA_avg_F1, QA_recall, quest_eval_save = self.quest_eval.quest_eval(data_point)
+        if self.use_bert_score:
+            bertscore = bert_score(generated_text, ground_truth_text)
+        else:
+            bertscore = 0.0
+        
         bleu_avg, bleu1, bleu2, bleu3, bleu4 = bleu_score(generated_text, ground_truth_text)
 
         return {
@@ -79,9 +88,9 @@ class HalluModified(BaseTask):
                 'bleu-3': bleu3 or 0.0,
                 'bleu-4': bleu4 or 0.0,
                 'rouge-L': rougeL_score(generated_text, ground_truth_text) or 0.0,
-                'bertScore': bert_score(generated_text, ground_truth_text) or 0.0,
-                'QA_avg_F1': QA_avg_F1 or 0.0,
-                'QA_recall': QA_recall or 0.0,
+                'bertScore': bertscore,
+                'QA_avg_F1': QA_avg_F1,
+                'QA_recall': QA_recall,
                 'length': len(generated_text)
             },
             'log': {

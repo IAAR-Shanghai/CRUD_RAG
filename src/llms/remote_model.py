@@ -1,4 +1,3 @@
-import openai
 import requests
 import json
 from loguru import logger
@@ -100,7 +99,6 @@ class GPT(BaseLLM):
             'User-Agent': conf.GPT_transit_user,
             'Content-Type': 'application/json',
             'Accept': '*/*',
-            'Host': conf.GPT_transit_url,
             'Connection': 'keep-alive'
         }
         res = requests.request("POST", url, headers=headers, data=payload)

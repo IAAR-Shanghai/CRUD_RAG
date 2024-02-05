@@ -8,3 +8,4 @@ bash
 tmp*
 real_config*
 merged.json
+*.sh

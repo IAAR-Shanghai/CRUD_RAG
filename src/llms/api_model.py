@@ -1,6 +1,4 @@
 import openai
-import requests
-import json
 from loguru import logger
 
 from src.llms.base import BaseLLM
