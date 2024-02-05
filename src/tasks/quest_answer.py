@@ -65,7 +65,16 @@ class QuestAnswer(BaseTask):
         ground_truth_text = data_point["answers"]
         data_point["ground_truth_text"] = ground_truth_text
         
-        QA_avg_F1, QA_recall, quest_eval_save = self.quest_eval.quest_eval(data_point)
+        if self.use_quest_eval:
+            QA_avg_F1, QA_recall, quest_eval_save = self.quest_eval.quest_eval(data_point)
+        else:
+            QA_avg_F1, QA_recall, quest_eval_save = 0.0, 0.0, {}
+        
+        if self.use_bert_score:
+            bertscore = bert_score(generated_text, ground_truth_text)
+        else:
+            bertscore = 0.0
+        
         bleu_avg, bleu1, bleu2, bleu3, bleu4 = bleu_score(generated_text, ground_truth_text)
 
         return {
@@ -76,9 +85,9 @@ class QuestAnswer(BaseTask):
                 'bleu-3': bleu3 or 0.0,
                 'bleu-4': bleu4 or 0.0,
                 'rouge-L': rougeL_score(generated_text, ground_truth_text) or 0.0,
-                'bertScore': bert_score(generated_text, ground_truth_text) or 0.0,
-                'QA_avg_F1': QA_avg_F1 or 0.0,
-                'QA_recall': QA_recall or 0.0,
+                'bertScore': bertscore,
+                'QA_avg_F1': QA_avg_F1,
+                'QA_recall': QA_recall,
                 'length': len(generated_text)
             },
             'log': {
@@ -111,14 +120,14 @@ class QuestAnswer(BaseTask):
 
 
 class QuestAnswer1Doc(QuestAnswer):
-    def __init__(self, task_scene: str = "Query", task_name: str = "QuestAnswer1Doc", output_dir: str = './output'):
-        super().__init__(task_scene, task_name, output_dir)
+    def __init__(self, output_dir: str = './output', use_quest_eval=False, use_bert_score=False):
+        super().__init__(output_dir, use_quest_eval=use_quest_eval, use_bert_score=use_bert_score)
 
 class QuestAnswer2Docs(QuestAnswer):
-    def __init__(self, task_scene: str = "Query", task_name: str = "QuestAnswer2Docs", output_dir: str = './output'):
-        super().__init__(task_scene, task_name, output_dir)
+    def __init__(self, output_dir: str = './output', use_quest_eval=False, use_bert_score=False):
+        super().__init__(output_dir, use_quest_eval=use_quest_eval, use_bert_score=use_bert_score)
 
 class QuestAnswer3Docs(QuestAnswer):
-    def __init__(self, task_scene: str = "Query", task_name: str = "QuestAnswer3Docs", output_dir: str = './output'):
-        super().__init__(task_scene, task_name, output_dir)
+    def __init__(self, output_dir: str = './output', use_quest_eval=False, use_bert_score=False):
+        super().__init__(output_dir, use_quest_eval=use_quest_eval, use_bert_score=use_bert_score)
 

@@ -7,7 +7,7 @@ import numpy as np
 from loguru import logger
 from collections import Counter
 
-from src.llms.base import BaseLLM
+from src.llms import GPT
 from importlib import import_module
 
 try:
@@ -20,7 +20,7 @@ json_response = '''
 \"question\": ["2014年中国新增并网光伏发电容量是多少？", "2014年中国新增并网光伏发电容量约占全球新增容量的几分之几？","全国新增光伏电站的容量是多少？", "分布式光伏容量是多少？", "2014年中国光伏发电量是多少？", "2014年中国光伏发电量相比前一年增长了多少？"]}
 '''
 
-class QuestEval(BaseLLM):
+class QuestEval(GPT):
     def __init__(self, model_name='gpt-3.5-turbo', temperature=1.0, max_new_tokens=1024, report=False, task_name='summary'):
         super().__init__(model_name, temperature, max_new_tokens)
         self.report = report
@@ -30,31 +30,6 @@ class QuestEval(BaseLLM):
     def save_quest_gt(self, task_name):
         with open(f'src/quest_eval/{task_name}_quest_gt_save.json', 'w', encoding='utf-8') as f:
             json.dump(self.quest_gt_save, f, ensure_ascii=False, indent=4)
-
-    def request(self, query: str) -> str:
-        url = conf.GPT_transit_url
-        payload = json.dumps({
-            "model": self.params['model_name'],
-            "messages": [{"role": "user", "content": query}],
-            "temperature": self.params['temperature'],
-            'max_tokens': self.params['max_new_tokens'],
-            "top_p": self.params['top_p'],
-        })
-        headers = {
-            'token': conf.GPT_transit_token,
-            'User-Agent': conf.GPT_user,
-            'Content-Type': 'application/json',
-            'Accept': '*/*',
-            'Host': '47.88.65.188:8001',
-            'Connection': 'keep-alive'
-        }
-        res = requests.request("POST", url, headers=headers, data=payload)
-        res = res.json()
-        real_res = res["choices"][0]["message"]["content"]
-
-        token_consumed = res['usage']['total_tokens']
-        logger.info(f'GPT token consumed: {token_consumed}') if self.report else ()
-        return real_res
 
     def question_generation(self, text4gen: str):
         prompt = self._read_prompt_template("quest_eval_gen.txt") 

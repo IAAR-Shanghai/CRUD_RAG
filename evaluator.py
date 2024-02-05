@@ -21,7 +21,7 @@ class BaseEvaluator(ABC):
             dataset (list[dict]): The dataset for evaluation.
             output_dir (str): The directory for result output and caching.
         """
-        self.model = copy.deepcopy(model)
+        self.model = model
         self.retriever = retriever
         self.dataset = dataset
         self.task = task
