@@ -109,7 +109,7 @@ python quick_start.py \
 ```
 
 # Important Notes
-- The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.**
+- The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.
 - The first time you run the code, you need to build a vector index for the text. This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
 
 # CITATION
