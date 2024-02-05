@@ -104,6 +104,6 @@ tasks = [task(use_quest_eval=args.quest_eval, use_bert_score=args.bert_score_eva
 datasets = get_task_datasets(args.data_path, args.task)
 
 for task, dataset in zip(tasks, datasets):
-    evaluator = BaseEvaluator(task, llm, retriever, dataset[:12], num_threads=args.num_threads)
+    evaluator = BaseEvaluator(task, llm, retriever, dataset, num_threads=args.num_threads)
     evaluator.run(show_progress_bar=args.show_progress_bar, contain_original_data=args.contain_original_data)
 

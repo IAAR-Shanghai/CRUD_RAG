@@ -1,12 +1,25 @@
+[English](./README.md) | [中文简体](./README.zh_CN.md)
+
+<h1 align="center">
+    📖 CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
+</h1>
+<p align="center">
+<a href="https://opensource.org/license/apache-2-0/">
+    <img alt="License: Apache" src="https://img.shields.io/badge/License-Apache2.0-green.svg">
+</a>
+<a href="https://github.com/IAAR-Shanghai/CRUD_RAG/issues">
+    <img alt="GitHub Issues" src="https://img.shields.io/github/issues/IAAR-Shanghai/CRUD_RAG?color=red">
+</a>
+<a href="https://arxiv.org/abs/2401.17043">
+    <img alt="arXiv Paper" src="https://img.shields.io/badge/Paper-arXiv-blue.svg">
+</a></p>
+
+
 # Highlights
-
-- 全面支持中文RAG Benchmark评测，包括原生的中文数据集、评测任务、主流基座测试；
-- 覆盖CRUD(增删改查)，即大模型信息新增能力、信息缩减能力、信息校正能力、信息查询问答能力全方位评测；
-- 总测试数据量达到36166个，为中文RAG测试最多；
-- 多个指标类型覆盖，包括 ROUGE, BLEU, bertScore, RAGQuestEval，一键评估；
-- TODO：增加更多英文RAG评测，双语支持；欢迎 Star 持续关注！
-
-# CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
+- This project fully supports the Chinese RAG system evaluation, which includes native Chinese datasets, evaluation tasks, and baseline models;
+- It covers CRUD (Create, Read, Update, Delete) operations, which are used to evaluate the RAG system's ability to add, reduce, correct information, as well as to answer questions based on the retrieve information;
+- It contains 36166 test samples, which is the largest number of Chinese RAG tests available;
+- It supports multiple evaluation metrics, such as ROUGE, BLEU, bertScore, RAGQuestEval, and provides a one-click evaluation function;
 
 # Introduction
 This repository contains the official code of CRUD-RAG, a novel benchmark for evaluting the RAG systems. It includes the datasets we created for evaluating RAG systems, and a tutorial on how to run the experiments on our benchmark.
@@ -31,7 +44,7 @@ This repository contains the official code of CRUD-RAG, a novel benchmark for ev
 │   │       
 │   ├── llms # This folder contains scripts used to load the large language models. 
 │   │   │
-│   │   ├── api.py  # Call GPT-series models.
+│   │   ├── api_model.py  # Call GPT-series models.
 │   │   │
 │   │   ├── local_model.py # Call a locally deployed model.
 │   │   │
@@ -92,8 +105,12 @@ python quick_start.py \
   --task 'all' \
   --num_threads 20 \
   --show_progress_bar True \
-  --construct_index True \ # you need to build a database when you use it first time
+  --construct_index \ # you need to build a vector index when you use it first time
 ```
+
+# Important Note
+- The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.**
+- The first time you run the code, you need to build a vector index for the text. This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
 
 # CITATION
 ```
@@ -104,3 +121,7 @@ python quick_start.py \
     year={2024},
 }
 ```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=IAAR-Shanghai/CRUD_RAG&type=Date)](https://star-history.com/#IAAR-Shanghai/CRUD_RAG&Date)
