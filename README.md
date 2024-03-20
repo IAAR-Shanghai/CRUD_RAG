@@ -1,7 +1,7 @@
 [English](./README.md) | [中文简体](./README.zh_CN.md)
 
 <h1 align="center">
-    📖 CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
+    CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
 </h1>
 <p align="center">
 <a href="https://opensource.org/license/apache-2-0/">
