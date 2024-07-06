@@ -21,6 +21,9 @@ class CustomBM25Retriever(ABC):
             collection_name: str = "docs_80k",
             construct_index: bool = False,
             similarity_top_k: int=2,
+            es_host: str = 'localhost',
+            es_port: int = 9221,
+            es_scheme: str = 'http',
         ):
         self.docs_directory = docs_directory
         self.embed_model = embed_model
@@ -28,14 +31,16 @@ class CustomBM25Retriever(ABC):
         self.chunk_overlap = chunk_overlap
         self.similarity_top_k = similarity_top_k
         self.collection_name = collection_name
+        self.es_host = es_host
+        self.es_port = es_port
+        self.es_scheme = es_scheme
 
         if construct_index:
             self.construct_index()
 
-        self.es_client = Elasticsearch([{'host': 'localhost', 'port': 9221, "scheme":"http"}])
+        self.es_client = Elasticsearch([{'host': self.es_host, 'port': self.es_port, "scheme": self.es_scheme}])
         print("Elasticsearch connected!")
 
-    
     def construct_index(self):
         documents = SimpleDirectoryReader(self.docs_directory).load_data()
         
@@ -48,7 +53,7 @@ class CustomBM25Retriever(ABC):
             embed_model=self.embed_model,llm=None,
         )
         vector_store = ElasticsearchStore(
-            index_name=self.collection_name, es_url="http://localhost:9221"
+            index_name=self.collection_name, es_url=f"{self.es_scheme}://{self.es_host}:{self.es_port}"
         )
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
         

@@ -1,7 +1,7 @@
 [English](./README.md) | [中文简体](./README.zh_CN.md)
 
 <h1 align="center">
-    📖 CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
+    CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models
 </h1>
 <p align="center">
 <a href="https://opensource.org/license/apache-2-0/">
@@ -27,41 +27,37 @@ This repository contains the official code of CRUD-RAG, a novel benchmark for ev
 # Project Structure
 ```bash
 ├── data  #  This folder comprises the datasets used for evaluation.
+│   │
 │   ├── crud 
 │   │   └── merged.json  # The complete datasets.
+│   │
 │   ├── crud_split
 │   │   └── split_merged.json # The dataset we used for experiments in the paper.
+│   │
 │   └── 80000_docs
-│       └── documents_dup_part... # More than 80,000 news documents, which are used to build the retrieval database of the RAG system.
-│ 
-│ 
+│   │    └── documents_dup_part... # More than 80,000 news documents, which are used to build the retrieval database of the RAG system.
+│   │     
 ├── src 
-│   ├── configs  # This folder comprises scripts used to initialize the loading parameters of the LLMs in RAG systems. 
-│   │   
+│   ├── configs  # This folder comprises scripts used to initialize the loading parameters of the LLMs in RAG systems.
+│   │
 │   ├── datasets # This folder contains scripts used to load the dataset.
 │   │
 │   ├── embeddings  # The embedding model used to build vector databases.
-│   │       
-│   ├── llms # This folder contains scripts used to load the large language models. 
-│   │   │
+│   │   
+│   ├── llms # This folder contains scripts used to load the large language models.
 │   │   ├── api_model.py  # Call GPT-series models.
-│   │   │
 │   │   ├── local_model.py # Call a locally deployed model.
-│   │   │
 │   │   └── remote_model.py # Call the model deployed remotely and encapsulated into an API.
 │   │
 │   ├── metric # The evaluation metric we used in the experiments.
-│   │   │
 │   │   ├── common.py  # bleu, rouge, bertScore.
-│   │   │
 │   │   └── quest_eval.py # RAGQuestEval. Note that using such metric requires calling a large language model such as GPT to answer questions, or modifying the code and deploying the question answering model yourself.
 │   │
 │   ├── prompts # The prompts we used in the experiments.
-│   │ 
+│   │
 │   ├── quest_eval # Question answering dataset for RAGQuestEval metric.
-│   │ 
+│   │
 │   ├── retrievers # The retriever used in RAG system.
-│   │ 
 │   │
 │   └── tasks # The evaluation tasks.
 │       ├── base.py
@@ -110,18 +106,14 @@ python quick_start.py \
 
 # Important Notes
 - The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.
-- The first time you run the code, you need to build a vector index for the text. This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
+- The first time you run the code, you need to build a vector index for the text(It takes about **3 hours**). This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
 
 # CITATION
 ```
-@article{CRUDRAG,
-    title={CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models},
-    author={Yuanjie Lyu, Zhiyu Li, Simin Niu, Feiyu Xiong, Bo Tang, Wenjin Wang, Hao Wu, Huanyong Liu, Tong Xu, Enhong Chen},
-    journal={arXiv preprint arXiv:2401.17043},
-    year={2024},
+@article{lyu2024crud,
+  title={CRUD-RAG: A comprehensive chinese benchmark for retrieval-augmented generation of large language models},
+  author={Lyu, Yuanjie and Li, Zhiyu and Niu, Simin and Xiong, Feiyu and Tang, Bo and Wang, Wenjin and Wu, Hao and Liu, Huanyong and Xu, Tong and Chen, Enhong},
+  journal={arXiv preprint arXiv:2401.17043},
+  year={2024}
 }
 ```
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=IAAR-Shanghai/CRUD_RAG&type=Date)](https://star-history.com/#IAAR-Shanghai/CRUD_RAG&Date)
