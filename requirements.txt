@@ -1,4 +1,4 @@
-llama_index==0.9.32
+llama_index==0.10.13
 langchain==0.1.4
 jieba
 loguru
