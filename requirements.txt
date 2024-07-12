@@ -1,5 +1,5 @@
-llama_index
-langchain
+llama_index==0.9.32
+langchain==0.1.4
 jieba
 loguru
 milvus==2.3.3
