@@ -14,13 +14,6 @@
     <img alt="arXiv Paper" src="https://img.shields.io/badge/Paper-arXiv-blue.svg">
 </a></p>
 
-
-# Highlights
-- This project fully supports the Chinese RAG system evaluation, which includes native Chinese datasets, evaluation tasks, and baseline models;
-- It covers CRUD (Create, Read, Update, Delete) operations, which are used to evaluate the RAG system's ability to add, reduce, correct information, as well as to answer questions based on the retrieve information;
-- It contains 36166 test samples, which is the largest number of Chinese RAG tests available;
-- It supports multiple evaluation metrics, such as ROUGE, BLEU, bertScore, RAGQuestEval, and provides a one-click evaluation function;
-
 # Introduction
 This repository contains the official code of CRUD-RAG, a novel benchmark for evaluting the RAG systems. It includes the datasets we created for evaluating RAG systems, and a tutorial on how to run the experiments on our benchmark.
 
