@@ -17,6 +17,11 @@
 # Introduction
 This repository contains the official code of CRUD-RAG, a novel benchmark for evaluting the RAG systems. It includes the datasets we created for evaluating RAG systems, and a tutorial on how to run the experiments on our benchmark.
 
+# Important Notes
+- The prompts in this repository are **designed for use with ChatGPT**. For other models, we recommend selecting appropriate prompts. The 7B models are particularly sensitive to prompts, they can not understand complex prompts. So please exercise caution.
+- The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.
+- The first time you run the code, you need to build a vector index for the text(It takes about **3 hours**). This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
+
 # Project Structure
 ```bash
 ├── data  #  This folder comprises the datasets used for evaluation.
@@ -96,10 +101,6 @@ python quick_start.py \
   --show_progress_bar True \
   --construct_index \ # you need to build a vector index when you use it first time
 ```
-
-# Important Notes
-- The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.
-- The first time you run the code, you need to build a vector index for the text(It takes about **3 hours**). This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
 
 # CITATION
 ```
