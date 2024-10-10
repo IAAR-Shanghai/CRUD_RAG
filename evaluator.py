@@ -79,11 +79,16 @@ class BaseEvaluator(ABC):
             try:
                 generated_text = self.task_generation(data_point)
                 # TODO fix bugs
-                if generated_text == '","msg":"request openai failed"':
+                if generated_text == '","msg":"request openai failed"' or generated_text == '':
                     return None
                 
                 data_point["generated_text"] = generated_text
-                result = {'id': data_point['ID'], **self.task.scoring(data_point)}
+
+                score_dict = self.task.scoring(data_point)
+                if score_dict is None:
+                    return None
+                
+                result = {'id': data_point['ID'], **score_dict}
                 
                 if contain_original_data:
                     result['original_data'] = data_point
