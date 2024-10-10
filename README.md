@@ -102,7 +102,7 @@ python quick_start.py \
   --construct_index \ # you need to build a vector index when you use it first time
 ```
 
-# CITATION
+# Citation
 ```
 @article{lyu2024crud,
   title={CRUD-RAG: A comprehensive chinese benchmark for retrieval-augmented generation of large language models},
