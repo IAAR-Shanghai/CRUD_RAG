@@ -104,10 +104,14 @@ python quick_start.py \
 
 # Citation
 ```
-@article{lyu2024crud,
-  title={CRUD-RAG: A comprehensive chinese benchmark for retrieval-augmented generation of large language models},
-  author={Lyu, Yuanjie and Li, Zhiyu and Niu, Simin and Xiong, Feiyu and Tang, Bo and Wang, Wenjin and Wu, Hao and Liu, Huanyong and Xu, Tong and Chen, Enhong},
-  journal={arXiv preprint arXiv:2401.17043},
-  year={2024}
+@article{Lyucurd24,
+author = {Lyu, Yuanjie and Li, Zhiyu and Niu, Simin and Xiong, Feiyu and Tang, Bo and Wang, Wenjin and Wu, Hao and Liu, Huanyong and Xu, Tong and Chen, Enhong},
+title = {CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models},
+year = {2024},
+publisher = {Association for Computing Machinery},
+issn = {1046-8188},
+url = {https://doi.org/10.1145/3701228},
+doi = {10.1145/3701228},
+journal = {ACM Transactions on Information Systems}
 }
 ```
