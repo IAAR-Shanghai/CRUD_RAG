@@ -21,6 +21,8 @@ This repository contains the official code of CRUD-RAG, a novel benchmark for ev
 - The prompts in this repository are **designed for use with ChatGPT**. For other models, we recommend selecting appropriate prompts. The 7B models are particularly sensitive to prompts, they can not understand complex prompts. So please exercise caution.
 - The use of RAGQuestEval metric relies on GPT, we use GPT as question answer and generator.
 - The first time you run the code, you need to build a vector index for the text(It takes about **3 hours**). This is a one-time process, so you don't need to repeat it later. Please make sure to omit the construct-index parameter when you use the code again.
+- The models evaluated are primarily from 2023. **Since then, output styles have shifted significantly** (e.g., use of subheadings, icons, and flattering or ingratiating language), which are absent in our references. Consequently, bleu scores based on string matching may vary. For comparable results, we recommend carefully prompting for concise outputs.
+
 
 # Project Structure
 ```bash
